@@ -1,4 +1,6 @@
 import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import CartContext from "../Context/CartContext";
 
 import Product from "../components/Product";
 
@@ -12,6 +14,8 @@ const products = [
 
 export default function ProductsPage() {
   const navigate = useNavigate();
+  const { product } = useContext(CartContext)
+  
   return (
     <div className="ProductsPage">
       <h1>Produtos disponíveis</h1>
@@ -24,6 +28,7 @@ export default function ProductsPage() {
               name={product.name}
               icon={product.icon}
               price={product.price}
+              selected={product.selected}
             />
           )
         })
